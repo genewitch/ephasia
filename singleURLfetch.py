@@ -11,8 +11,8 @@ c.perform()
 from bs4 import BeautifulSoup
 import redis
 souper = BeautifulSoup(b.getvalue())
-for link in souper.find_all('a'):
-    print(link.get('href'))
+'''for link in souper.find_all('a'):
+    print(link.get('href'))'''
 r = redis.Redis(host='localhost', port=6379, db=1)
 for link in souper.find_all('a'):
         r.lpush('www.gentoo.org', link.get('href'))
